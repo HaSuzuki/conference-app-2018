@@ -44,4 +44,14 @@ import javax.inject.Singleton
 
     @Singleton @Provides @JvmStatic
     fun provideFeedApi(): FeedApi = FeedFirestoreApi()
+
+    @Singleton @Provides @JvmStatic
+    fun provideSessionFeedbackApi(@RetrofitGoogleForm retrofit: Retrofit): SessionFeedbackApi {
+        return retrofit.create(SessionFeedbackApi::class.java)
+    }
+
+    @Singleton @Provides @JvmStatic
+    fun provideGithubApi(@RetrofitGithub retrofit: Retrofit): GithubApi {
+        return retrofit.create(GithubApi::class.java)
+    }
 }
